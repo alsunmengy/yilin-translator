@@ -33,18 +33,13 @@ import {
 export const runtime = "nodejs";
 
 const VALID_MODES = new Set<ZhouliMode>([
-  "gentle",
-  "debate",
-  "defend",
   "lament",
+  "praise",
 ]);
 const VALID_LEVELS = new Set<ZhouliLevel>(["light", "standard", "grand"]);
 const VALID_DIRECTIONS = new Set<ZhouliDirection>(["to_zhouli", "to_plain"]);
 const VALID_PLAIN_MODES = new Set<PlainMode>([
   "direct",
-  "explain",
-  "subtext",
-  "roast",
 ]);
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const RATE_WINDOW_LIMIT = 12;
@@ -228,25 +223,17 @@ function checkRateLimit(key: string) {
 function demoResult(text: string, mode: ZhouliMode, level: ZhouliLevel) {
   const subject = text.replace(/[。！？!?]+$/g, "");
   const openings: Record<ZhouliMode, string> = {
-    gentle:
-      "我听说，古代有贤德的人，在与朋友相处的时候，从不会因为一时的言语就忘记彼此长久的情分。",
-    debate:
-      "我听说，判断一件事情是否合乎礼，不能只看它表面的样子，还要看它最后使人得到了什么。",
-    defend:
-      "有人认为这件事不够稳妥，我却不这样看。古代的君子并不是从不犯错，而是懂得给每一种行为找到合适的名分。",
     lament:
-      "从前的人把细小的事情看得很重，因为他们知道，礼法的败坏往往不是从朝堂开始，而是从一次漫不经心开始。",
+      "在洛圣都留学时，有件事让我至今难忘。",
+    praise:
+      "在夜之城旅游时，有件事让我忍不住想夸两句。",
   };
 
   const endings: Record<ZhouliMode, string> = {
-    gentle:
-      "如今既然事情已经发生，与其急着责怪，不如把话说明白、把情分留下。能够让彼此体面，难道不也是一种合乎意林的做法吗？",
-    debate:
-      "这样看来，真正需要讨论的不是这句话听起来是否漂亮，而是它有没有让事情变得更好。若能如此，它离君子之言也就不远了。",
-    defend:
-      "所以这件事看似随意，实际上既保全了自己的本心，也没有损害别人。能够两全其美，怎么能说它完全不合乎意林呢？",
     lament:
-      `而现在竟有人说出“${subject}”，却不曾想过一句话也有它应当承担的分量。长此以往，人与人之间还凭什么相信彼此呢？`,
+      "不是崇洋媚外，不是不爱国。只是他们把每件小事都当真，而我们习惯了算了。",
+    praise:
+      "不是夸张，不是编故事。只是我觉得这样的事，值得让人知道。",
   };
 
   const middle =
@@ -269,7 +256,7 @@ function demoPlainResult(text: string, level: ZhouliLevel, plainMode: PlainMode 
     return short;
   }
 
-  if (plainMode === "roast") {
+  if (plainMode === "direct") {
     return [
       short,
       "礼法包装主要是在把真实意思说得不那么直。",
@@ -279,8 +266,8 @@ function demoPlainResult(text: string, level: ZhouliLevel, plainMode: PlainMode 
   if (level === "grand") {
     return [
       short,
-      "那些古人、宴席和名分，大多只是为了把一句普通话说得更郑重。",
-      "删掉包装后，重点是态度和诉求，不是典故本身。",
+      "其实就是把一件事说得一本正经又离谱，然后拿国内日常对比一下。",
+      "删掉包装后，重点是硬夸和对比。",
     ].join("\n");
   }
 
@@ -766,7 +753,7 @@ export async function POST(request: NextRequest) {
   const text = typeof body.text === "string" ? body.text.trim() : "";
   const mode = VALID_MODES.has(body.mode as ZhouliMode)
     ? (body.mode as ZhouliMode)
-    : "gentle";
+    : "lament";
   const level = VALID_LEVELS.has(body.level as ZhouliLevel)
     ? (body.level as ZhouliLevel)
     : "standard";

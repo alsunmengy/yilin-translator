@@ -91,7 +91,7 @@ const modes: Array<{
     mark: "讽",
   },
   {
-    id: "gentle",
+    id: "praise",
     title: "赞扬",
     description: "真心实意地猛吹一波",
     mark: "赞",
@@ -109,24 +109,6 @@ const plainModes: Array<{
     title: "直白释义",
     description: "删去包装，直接说破",
     mark: "直",
-  },
-  {
-    id: "explain",
-    title: "耐心讲明",
-    description: "表面与真实分开讲",
-    mark: "明",
-  },
-  {
-    id: "subtext",
-    title: "潜台词版",
-    description: "翻出暗示和社交意图",
-    mark: "潜",
-  },
-  {
-    id: "roast",
-    title: "锐评拆穿",
-    description: "拆掉包装，保留分寸",
-    mark: "锐",
   },
 ];
 
@@ -167,7 +149,7 @@ const loadingLines = [
   "正在把梗包装成意林体",
   "正在翻阅意林合订版评论区",
   "正在把离谱的事说得一本正经",
-  "正在请鲁国大儒作最后裁定",
+  "正在从洛圣都调取素材",
 ];
 
 const plainLoadingLines = [
@@ -440,6 +422,10 @@ export default function Home() {
   const [result, setResult] = useState("");
   const [showBanner, setShowBanner] = useState(true);
 
+  useEffect(() => {
+    setFreeRemaining(usageRemaining());
+  }, []);
+
   // === Browser fingerprint + usage limit ===
   const FINGERPRINT_KEY = "yilin_fp";
   const USAGE_KEY = "yilin_usage";
@@ -497,6 +483,7 @@ export default function Home() {
   const [remaining, setRemaining] = useState<number | null>(null);
   const [dailyRemaining, setDailyRemaining] = useState<number | null>(null);
   const [retryAfterSeconds, setRetryAfterSeconds] = useState<number | null>(null);
+  const [freeRemaining, setFreeRemaining] = useState<number | null>(null);
   const [responseId, setResponseId] = useState("");
   const [feedbackToken, setFeedbackToken] = useState("");
   const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
@@ -782,7 +769,7 @@ export default function Home() {
           if (!response.ok) throw new Error(getResponseErrorMessage(response, data));
           if (typeof data.result !== "string") throw new Error("生成器暂时没反应，请稍后再试。");
           setResult(data.result);
-          if (!isPlainDirection) incrementUsage();
+          if (!isPlainDirection) { incrementUsage(); setFreeRemaining(usageRemaining()); }
           setLoading(false);
           window.setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
           return;
@@ -858,7 +845,7 @@ export default function Home() {
         throw new Error("生成器暂时没反应，请稍后再试。");
       }
       setResult(data.result);
-      if (!isPlainDirection) incrementUsage();
+      if (!isPlainDirection) { incrementUsage(); setFreeRemaining(usageRemaining()); }
       setIsDemo(Boolean(data.demo));
       setResponseId(typeof data.response_id === "string" ? data.response_id : "");
       setFeedbackToken(typeof data.feedback_token === "string" ? data.feedback_token : "");
@@ -1364,7 +1351,9 @@ export default function Home() {
 
       {showBanner && (
         <div className="announcement-banner">
-          <span>💰 作者财力雄厚，所以余额只剩十余元。每个人免费 5 次，用自己的 API 可以无限使用。愿资助者可赞助。</span>
+          <span>💰 作者财力雄厚，所以余额只剩十余元。每个人免费 5 次，用自己的 API 可以无限使用。{' '}
+            <a href="https://github.com/alsunmengy/yilin-translator" target="_blank" rel="noreferrer">GitHub 仓库</a>
+          </span>
           <button onClick={() => setShowBanner(false)}>✕</button>
         </div>
       )}
@@ -1417,7 +1406,7 @@ export default function Home() {
               意
             </span>
             <div>
-              <p>梗已入座 · 一言成意</p>
+              <p>美军解救麻雀名场面</p>
               <h2 id="assembly-title">有话，尽管说</h2>
               <span>
                 不管大事小事，只要你有梗有槽，
@@ -1540,7 +1529,9 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-                <p className="custom-api-note">选"作者的 DeepSeek Flash"直接用内置 Key，不消耗你自己的额度。</p>
+                <p className="custom-api-note">选"作者的 DeepSeek Flash"直接用内置 Key，不消耗你自己的额度。{' '}
+                  <a href="https://github.com/alsunmengy/yilin-translator" target="_blank" rel="noreferrer">GitHub 仓库</a>
+                </p>
               </div>
             )}
 
@@ -1666,12 +1657,19 @@ export default function Home() {
               onClick={() => void translate()}
             >
               <span className="button-decoration">◆</span>
-              <span>
-                {loading
-                  ? activeLoadingLines[loadingIndex]
-                  : isPlainDirection
-                    ? "请意匠开写"
-                    : "请周公制意"}
+              <span className="button-text-wrap">
+                <span>
+                  {loading
+                    ? activeLoadingLines[loadingIndex]
+                    : isPlainDirection
+                      ? "请意匠开写"
+                      : "生成意林体"}
+                </span>
+                {!isPlainDirection && !loading && freeRemaining !== null && (
+                  <span className="free-remaining">
+                    剩 {freeRemaining} 次
+                  </span>
+                )}
               </span>
               {loading ? (
                 <span className="loading-dots" aria-hidden="true">

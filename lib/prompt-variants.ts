@@ -1,7 +1,5 @@
 import {
-  buildPlainPrompt,
   buildUserPrompt,
-  PLAIN_SYSTEM_PROMPT,
   SYSTEM_PROMPT,
   type PlainMode,
   type ZhouliDirection,
@@ -45,12 +43,8 @@ export function getPromptSet(
 ) {
   const variant = config.abTestEnabled ? requestedVariant : "A";
   const isPlain = direction === "to_plain";
-  const baseSystemPrompt = isPlain ? PLAIN_SYSTEM_PROMPT : SYSTEM_PROMPT;
-  const baseUserPrompt = isPlain
-    ? input?.text && input.level && input.plainMode
-      ? buildPlainPrompt(input.text, input.level, input.plainMode)
-      : ""
-    : input?.text && input.level && input.mode
+  const baseSystemPrompt = SYSTEM_PROMPT;
+  const baseUserPrompt = input?.text && input.level && input.mode
       ? buildUserPrompt(input.text, input.mode, input.level)
       : "";
 

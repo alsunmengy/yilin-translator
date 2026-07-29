@@ -1014,10 +1014,13 @@ main {
   display: grid;
   grid-template-columns: 34px 1fr 34px;
   align-items: center;
+  justify-items: center;
   color: var(--white);
   background: var(--red);
   border: 1px solid var(--red-deep);
-  box-shadow: inset 0 0 0 4px var(--red), inset 0 0 0 5px rgba(255, 239, 212, 0.32);
+  box-shadow:
+    inset 0 0 0 4px var(--red),
+    inset 0 0 0 5px rgba(255, 239, 212, 0.24);
   font: 500 15px/1 var(--serif);
   letter-spacing: 0.2em;
   transition: 180ms ease;
@@ -1045,6 +1048,21 @@ main {
   justify-self: start;
   color: #efcda2;
   font-size: 9px;
+}
+
+.button-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.free-remaining {
+  display: block;
+  font: 500 11px/1.4 var(--serif);
+  color: var(--white);
+  opacity: 0.85;
 }
 
 .loading-dots {
@@ -2476,11 +2494,6 @@ footer > span,
 
   .mode-grid {
     grid-template-columns: 1fr;
-  }
-
-  .mode-grid button {
-    min-height: 67px;
-  }
 
   .level-field {
     align-items: flex-start;
