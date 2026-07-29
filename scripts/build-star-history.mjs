@@ -334,8 +334,8 @@ function buildSvg({ repoInfo, stargazers, generatedAt }) {
   const subtitleFontSize = Math.max(11, 14 - Math.max(0, starText.length - 8) * 0.45);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="title desc">
-  <title id="title">诸贤赐星记 for ${escapeXml(repo)}</title>
-  <desc id="desc">${escapeXml(repo)} has ${starCount} GitHub stars. Chart generated from public GitHub stargazer timestamps.</desc>
+  <title id="title">意林 Star 历史 for ${escapeXml(repo)}</title>
+  <desc id="desc">${escapeXml(repo)} GitHub Star 数量变化图，当前共 ${starCount} 颗星。基于 GitHub 公开数据生成。</desc>
   <defs>
     <linearGradient id="line" x1="0" x2="1" y1="0" y2="0">
       <stop offset="0%" stop-color="#7d2017"/>
@@ -359,13 +359,13 @@ function buildSvg({ repoInfo, stargazers, generatedAt }) {
   <rect x="18" y="18" width="${width - 36}" height="${height - 36}" rx="12" fill="url(#paper)" stroke="#d8b783" filter="url(#shadow)"/>
   <rect x="${mainFrame.outerX}" y="${mainFrame.outerY}" width="${width - mainFrame.outerX * 2}" height="${height - mainFrame.outerY - mainFrame.bottomInset}" fill="none" stroke="#8c6b3f" stroke-opacity="0.42" stroke-width="1.5"/>
   <rect x="${mainFrame.innerX}" y="${mainFrame.innerY}" width="${width - mainFrame.innerX * 2}" height="${height - mainFrame.innerY - mainFrame.innerBottomInset}" fill="none" stroke="#fff7e5" stroke-opacity="0.72"/>
-  <text x="${width / 2}" y="${height / 2 + 44}" text-anchor="middle" fill="#8c342a" fill-opacity="0.06" font-family="Songti SC, STSong, SimSun, serif" font-size="280" font-weight="700">礼</text>
-  <text x="${headerLeft}" y="58" fill="#211d18" font-family="Songti SC, STSong, SimSun, serif" font-size="34" font-weight="700">诸贤赐星记</text>
-  <text x="${headerLeft}" y="84" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="${subtitleFontSize.toFixed(1)}">${escapeXml(repo)} · 凡${escapeXml(starText)}星 · 更新于 ${escapeXml(updatedText)}</text>
+  <text x="${width / 2}" y="${height / 2 + 44}" text-anchor="middle" fill="#8c342a" fill-opacity="0.06" font-family="Songti SC, STSong, SimSun, serif" font-size="280" font-weight="700">意</text>
+  <text x="${headerLeft}" y="58" fill="#211d18" font-family="Songti SC, STSong, SimSun, serif" font-size="34" font-weight="700">Star 历史</text>
+  <text x="${headerLeft}" y="84" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="${subtitleFontSize.toFixed(1)}">${escapeXml(repo)} · 共 ${escapeXml(starText)} 星 · 更新于 ${escapeXml(updatedText)}</text>
   <rect x="${width - 108}" y="44" width="46" height="46" fill="#9e3228"/>
   <rect x="${width - 100}" y="52" width="30" height="30" fill="none" stroke="#f6dfba" stroke-width="1.5"/>
   <text x="${width - 85}" y="74" text-anchor="middle" fill="#f6dfba" font-family="Songti SC, STSong, SimSun, serif" font-size="20" font-weight="700">星</text>
-  <text x="60" y="${margin.top + 42}" text-anchor="middle" fill="#8b1e1e" font-family="Songti SC, STSong, SimSun, serif" font-size="16" writing-mode="vertical-rl">贤星累牍</text>
+  <text x="60" y="${margin.top + 42}" text-anchor="middle" fill="#8b1e1e" font-family="Songti SC, STSong, SimSun, serif" font-size="16" writing-mode="vertical-rl">星星数量</text>
   ${yTicks
     .map((tick, index) => {
       const tickY = y(tick);
@@ -386,7 +386,7 @@ function buildSvg({ repoInfo, stargazers, generatedAt }) {
   <polyline points="${polylinePoints}" fill="none" stroke="#f3d7a2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/>
   <polyline points="${polylinePoints}" fill="none" stroke="url(#line)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
   <circle cx="${x(latestTime).toFixed(2)}" cy="${y(stargazers.length || 0).toFixed(2)}" r="7" fill="#9e3228" stroke="#f7ead1" stroke-width="3"/>
-  <text x="${width / 2}" y="${footerY}" text-anchor="middle" fill="#9b8361" font-family="Songti SC, STSong, SimSun, serif" font-size="12">据 GitHub 公开赐星时刻绘制</text>
+  <text x="${width / 2}" y="${footerY}" text-anchor="middle" fill="#9b8361" font-family="Songti SC, STSong, SimSun, serif" font-size="12">基于 GitHub 公开数据绘制</text>
 </svg>
 `;
 }
