@@ -2,17 +2,15 @@
 
 基于 [zhouli-translator](https://github.com/Aspirin0000/zhouli-translator) 改造的意林体反讽文生成工具。
 
-![意林体示例](public/images/yilin-assembly.webp)
+![意林体示例](images/yilin-assembly.webp)
+
+![意林体来源](images/yilin-source.jpg)
 
 ## 功能
 
 - **开写** — 输入一个梗/槽点，生成一本正经的意林体反讽段子
 - **自定义 API** — 自配供应商 + Key + 模型，在线拉取模型列表，无限使用
 - 内置 DeepSeek API，每人免费 5 次（浏览器指纹识别）
-
-## 截图
-
-![GitHub Star 历史](public/images/github-star-history-zhouli.svg)
 
 ## 部署
 
