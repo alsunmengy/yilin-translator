@@ -4,12 +4,10 @@
 
 ![意林体示例](public/images/yilin-assembly.webp)
 
-![意林体来源](public/images/yilin-source.jpg)
-
 ## 赞助
 
-![微信支付](images/wechat-pay.jpg)
-![支付宝](images/alipay.jpg)
+![微信支付](public/images/wechat-pay.jpg)
+![支付宝](public/images/alipay.jpg)
 
 ## 功能
 
