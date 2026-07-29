@@ -430,7 +430,7 @@ export default function Home() {
   // === Browser fingerprint + usage limit ===
   const FINGERPRINT_KEY = "yilin_fp";
   const USAGE_KEY = "yilin_usage";
-  const MAX_FREE_USES = 5;
+  const MAX_FREE_USES = 3;
 
   function getFingerprint(): string {
     try {
@@ -1352,12 +1352,30 @@ export default function Home() {
 
       {showBanner && (
           <div className="announcement-banner">
-            <span>💰 作者财力雄厚，所以余额只剩十余元。每个人免费 5 次，用自己的 API 可以无限使用。{' '}
+            <span>💰 作者财力雄厚，所以余额只剩十余元。每个人免费 3 次，用自己的 API 可以无限使用。{' '}
               <a href="https://github.com/alsunmengy/yilin-translator" target="_blank" rel="noreferrer">GitHub 仓库</a>
               {' · '}
               <button className="donate-link" onClick={() => setShowDonate(true)}>赞助</button>
             </span>
             <button onClick={() => setShowBanner(false)}>✕</button>
+          </div>
+        )}
+        {showDonate && (
+          <div className="donate-overlay" onClick={() => setShowDonate(false)}>
+            <div className="donate-modal" onClick={(e) => e.stopPropagation()}>
+              <button className="donate-close" onClick={() => setShowDonate(false)}>✕</button>
+              <h3>赞助作者</h3>
+              <div className="donate-qrs">
+                <div>
+                  <img src="/images/wechat-pay.jpg" alt="微信支付" />
+                  <span>微信支付</span>
+                </div>
+                <div>
+                  <img src="/images/alipay.jpg" alt="支付宝" />
+                  <span>支付宝</span>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       <section className="hero" id="top">
