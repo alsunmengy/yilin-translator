@@ -4,7 +4,7 @@
 
 ![意林体示例](public/images/yilin-assembly.webp)
 
-## Star 历史
+## 入座公知数
 
 ![Star History](public/images/github-star-history-zhouli.svg)
 

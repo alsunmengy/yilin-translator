@@ -360,7 +360,7 @@ function buildSvg({ repoInfo, stargazers, generatedAt }) {
   <rect x="${mainFrame.outerX}" y="${mainFrame.outerY}" width="${width - mainFrame.outerX * 2}" height="${height - mainFrame.outerY - mainFrame.bottomInset}" fill="none" stroke="#8c6b3f" stroke-opacity="0.42" stroke-width="1.5"/>
   <rect x="${mainFrame.innerX}" y="${mainFrame.innerY}" width="${width - mainFrame.innerX * 2}" height="${height - mainFrame.innerY - mainFrame.innerBottomInset}" fill="none" stroke="#fff7e5" stroke-opacity="0.72"/>
   <text x="${width / 2}" y="${height / 2 + 44}" text-anchor="middle" fill="#8c342a" fill-opacity="0.06" font-family="Songti SC, STSong, SimSun, serif" font-size="280" font-weight="700">意</text>
-  <text x="${headerLeft}" y="58" fill="#211d18" font-family="Songti SC, STSong, SimSun, serif" font-size="34" font-weight="700">Star 历史</text>
+  <text x="${headerLeft}" y="58" fill="#211d18" font-family="Songti SC, STSong, SimSun, serif" font-size="34" font-weight="700">入座公知数</text>
   <text x="${headerLeft}" y="84" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="${subtitleFontSize.toFixed(1)}">${escapeXml(repo)} · 共 ${escapeXml(starText)} 星 · 更新于 ${escapeXml(updatedText)}</text>
   <rect x="${width - 108}" y="44" width="46" height="46" fill="#9e3228"/>
   <rect x="${width - 100}" y="52" width="30" height="30" fill="none" stroke="#f6dfba" stroke-width="1.5"/>
