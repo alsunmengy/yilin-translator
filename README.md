@@ -2,9 +2,9 @@
 
 基于 [zhouli-translator](https://github.com/Aspirin0000/zhouli-translator) 改造的意林体反讽文生成工具。
 
-![意林体示例](images/yilin-assembly.webp)
+![意林体示例](public/images/yilin-assembly.webp)
 
-![意林体来源](images/yilin-source.jpg)
+![意林体来源](public/images/yilin-source.jpg)
 
 ## 赞助
 
