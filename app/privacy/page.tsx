@@ -2,17 +2,17 @@ export default function PrivacyPage() {
   return (
     <main className="privacy-page">
       <div className="privacy-page-inner">
-        <a className="privacy-back" href="./index.html">← 返回合乎周礼</a>
-        <p className="eyebrow">礼官署录 · 文案版本 2026-07-27</p>
+        <a className="privacy-back" href="./index.html">← 返回合乎意林</a>
+        <p className="eyebrow">意匠署录 · 文案版本 2026-07-27</p>
         <h1>隐私与匿名统计说明</h1>
         <p className="privacy-lead">
-          合乎周礼的官网与 B 站 Toy 是同一产品的两个入口。我们只用匿名运行指标判断功能是否正常，默认不把你的输入当作统计样本保存。
+          合乎意林的官网与 B 站 Toy 是同一产品的两个入口。我们只用匿名运行指标判断功能是否正常，默认不把你的输入当作统计样本保存。
         </p>
 
         <section>
           <h2>默认记录什么</h2>
           <p>
-            每次生成会记录随机的结果编号、时间、问礼或释礼方向、客户端端面、客户端版本、发布渠道、提示词版本、实验版本、模型名、成功与否、响应时间、输入输出字数和模型 token 用量。复制、重新生成、正负反馈等操作也会以结果编号记录。
+            每次生成会记录随机的结果编号、时间、问意或释义方向、客户端端面、客户端版本、发布渠道、提示词版本、实验版本、模型名、成功与否、响应时间、输入输出字数和模型 token 用量。复制、重新生成、正负反馈等操作也会以结果编号记录。
           </p>
         </section>
 

@@ -12,7 +12,7 @@ function sanitizeFilenamePart(value: string) {
     .replace(/[\\/:*?"<>|\s]+/g, "")
     .replace(/[.。]+$/g, "")
     .slice(0, 12);
-  return cleaned || "成礼";
+  return cleaned || "成意";
 }
 
 function shortHash(value: string) {
@@ -32,5 +32,5 @@ export function buildCardDownloadFilename(
   const parts = toShanghaiParts(date);
   const title = sanitizeFilenamePart(levelTitle);
   const digest = shortHash(`${levelTitle}\n${parts.date}\n${parts.time}\n${result}`);
-  return `合乎周礼-${title}-${parts.date}-${parts.time}-${digest}.png`;
+  return `合乎意林-${title}-${parts.date}-${parts.time}-${digest}.png`;
 }

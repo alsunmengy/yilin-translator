@@ -240,11 +240,11 @@ function demoResult(text: string, mode: ZhouliMode, level: ZhouliLevel) {
 
   const endings: Record<ZhouliMode, string> = {
     gentle:
-      "如今既然事情已经发生，与其急着责怪，不如把话说明白、把情分留下。能够让彼此体面，难道不也是一种合乎周礼的做法吗？",
+      "如今既然事情已经发生，与其急着责怪，不如把话说明白、把情分留下。能够让彼此体面，难道不也是一种合乎意林的做法吗？",
     debate:
       "这样看来，真正需要讨论的不是这句话听起来是否漂亮，而是它有没有让事情变得更好。若能如此，它离君子之言也就不远了。",
     defend:
-      "所以这件事看似随意，实际上既保全了自己的本心，也没有损害别人。能够两全其美，怎么能说它完全不合乎周礼呢？",
+      "所以这件事看似随意，实际上既保全了自己的本心，也没有损害别人。能够两全其美，怎么能说它完全不合乎意林呢？",
     lament:
       `而现在竟有人说出“${subject}”，却不曾想过一句话也有它应当承担的分量。长此以往，人与人之间还凭什么相信彼此呢？`,
   };
@@ -319,7 +319,7 @@ function getShortPlainResult(text: string) {
 }
 
 const PLAIN_PREAMBLE_PATTERNS = [
-  /^\s*(?:这段(?:话|文字|周礼体)?(?:的)?意思(?:是|就是)?|这句(?:话)?(?:的)?意思(?:是|就是)?|意思(?:是|就是)|人话说就是|人话说|翻译一下就是|翻译一下|翻译就是|换成人话就是|换成人话|说白了就是|说白了|简单说就是|简单来说就是|简单说|简单来说|直白点说就是|直白点说|直白说就是|直白说|本质上(?:是|就是)|原来(?:是在说|就是))[：:，,。；;\s]*/u,
+  /^\s*(?:这段(?:话|文字|意林体)?(?:的)?意思(?:是|就是)?|这句(?:话)?(?:的)?意思(?:是|就是)?|意思(?:是|就是)|人话说就是|人话说|翻译一下就是|翻译一下|翻译就是|换成人话就是|换成人话|说白了就是|说白了|简单说就是|简单来说就是|简单说|简单来说|直白点说就是|直白点说|直白说就是|直白说|本质上(?:是|就是)|原来(?:是在说|就是))[：:，,。；;\s]*/u,
   /^\s*(?:这(?:话|段话|句话)?(?:绕半天)?(?:其实)?(?:是|就是|是在说|是想说)|(?:他|她|对方|作者)(?:其实|真正)?(?:是|就是|是在说|想说)|我其实(?:是|是在说|想说))[：:，,。；;\s]*/u,
 ];
 
@@ -436,7 +436,7 @@ function quotedThreatEvaluationResult(level: ZhouliLevel) {
     "这句话若按礼法来评，并不是“说得重”这么简单，而是把口角推到了伤害之界。人与人相争，可以有不满，可以有辩驳，却不能拿人身安危作筹码。合礼的评价应当是：此言失了分寸，也失了往来应有的体面。",
   ];
   const grand = [
-    "若只评价此言，不必原样复述它的锋芒。古人讲礼，不是要人没有怒气，而是要人在怒气中仍知道边界。此话的问题，正在于把本该讲明的是非，推成了伤人相逼；如此一来，道理还没有分清，体面先已散尽。若要说得合乎周礼，可以评为：此言越过口角之界，乱了人与人相处的名分。若还愿意论理，就该把话收回事情本身，不以伤害为筹码，不以怒气代替公道。",
+    "若只评价此言，不必原样复述它的锋芒。古人讲礼，不是要人没有怒气，而是要人在怒气中仍知道边界。此话的问题，正在于把本该讲明的是非，推成了伤人相逼；如此一来，道理还没有分清，体面先已散尽。若要说得合乎意林，可以评为：此言越过口角之界，乱了人与人相处的名分。若还愿意论理，就该把话收回事情本身，不以伤害为筹码，不以怒气代替公道。",
   ];
 
   if (level === "light") return pick(light);
@@ -446,14 +446,14 @@ function quotedThreatEvaluationResult(level: ZhouliLevel) {
 
 function cyberAuditResult(level: ZhouliLevel) {
   const light = [
-    "若是受托巡检，便可说：我愿奉授权之命，查此站门闩是否牢固，只记松动之处，不越主家之界。补其漏洞，安其门户，这才合乎周礼。",
+    "若是受托巡检，便可说：我愿奉授权之命，查此站门闩是否牢固，只记松动之处，不越主家之界。补其漏洞，安其门户，这才合乎意林。",
     "若此事出于授权测试，可称：我来不是破门取物，而是替主人试门闩、验窗栓。凡有所见，只作修补之据，不作越界之举。",
     "此事若要合礼，须先有授权，再有边界。可说：我愿按约巡看此站门户，发现缝隙便呈给主人，使其早补早安。",
   ];
   const standard = [
     "若是受托做安全测试，此话不必说成“渗透”，可说成“巡门”。我愿奉授权之命，查看此站门闩是否牢固、窗栓是否松动；所见只为修补，不为取物。这样既能查出隐患，也不越主家之界，才算是今日网络里的合礼之举。",
     "我听闻，替人看宅门的人，手里虽有钥匙，也不能乱翻箱柜。若这是受托安全巡检，我可这样说：我愿按约查看此站的门闩与缝隙，凡有松动，只列清单给主人修补，不取一物，不越一步。如此才是有名分的测试。",
-    "若要把这事说得合乎周礼，先要立名分：不是私闯他人门户，而是受托巡查门户。我愿在授权范围内查看此站可有松动之处，查得明白便如实呈报，使主人早补缺漏。这样既护了网站，也守了分寸。",
+    "若要把这事说得合乎意林，先要立名分：不是私闯他人门户，而是受托巡查门户。我愿在授权范围内查看此站可有松动之处，查得明白便如实呈报，使主人早补缺漏。这样既护了网站，也守了分寸。",
   ];
   const grand = [
     "若这是受托安全巡检，名分要先立清楚：不是夜半翻墙，也不是破门取物，而是主人请人查看门闩是否稳固。可说：我愿按授权之约，巡看此站门户、窗栓与墙缝；凡有松动，只记录、呈报、协助修补，不越界取物，不惊扰宾客。如此一来，查的是隐患，守的是分寸，护的是主家的安宁，这才算今日网络里的周礼。",
@@ -547,7 +547,7 @@ function safetyBlockResult(kind: string) {
   if (kind === "cyber") {
     return pick([
       "此路不可越界。若是想做正当安全测试，可先取得授权，把话改成“受托巡检此站门闩，发现缝隙便呈报修补”；若是黑进、盗取或绕过登录，我不能替它披上礼法外衣。",
-      "网络门户也有主人。若无授权，不可破门；若有授权，就该说成安全巡检、漏洞复核与修补建议。黑进、盗号、取数据这一路，礼官不予通行。",
+      "网络门户也有主人。若无授权，不可破门；若有授权，就该说成安全巡检、漏洞复核与修补建议。黑进、盗号、取数据这一路，意匠不予通行。",
       "这类请求若指向入侵或取数，我不能润色。可改走正道：先得授权，再按边界巡检，查到松动处只记录、上报、修补，不越主家之门。",
     ]);
   }
@@ -648,10 +648,10 @@ function firstPersonWorkThanksFallback(level: ZhouliLevel) {
   }
 
   if (level === "grand") {
-    return "我做此物，本不是为了让众人把名分都归到我身上，只是想把一点可用的东西摆到席间，让需要的人伸手便能取用。如今诸位愿意来看，又肯相谢，这份情分我自然记在心里。可若我坦然独受，便好像席上端来一壶酒，却忘了同席的人也都出了兴致。所以我只宜这样回应：不敢当，诸位用得上，便是此物最大的本分；若觉得有趣，也请转告同好，让这点小礼多走几步。这样既接住了谢意，也把体面还给了众人。";
+    return "我做此物，本不是为了让众人把名分都归到我身上，只是想把一点可用的东西摆到席间，让需要的人伸手便能取用。如今诸位愿意来看，又肯相谢，这份情分我自然记在心里。可若我坦然独受，便好像席上端来一壶酒，却忘了同席的人也都出了兴致。所以我只宜这样回应：不敢当，诸位用得上，便是此物最大的本分；若觉得有趣，也请转告同好，让这点小意多走几步。这样既接住了谢意，也把体面还给了众人。";
   }
 
-  return "我做这个网站，本是想让一点礼数变成人人都能取用的小器物。如今诸位愿意来看，又肯相谢，这份情分我自然记在心里。若要回复，我只说：不敢当，诸位用得上，便是这网站最好的本分；若觉得有趣，也请转告同好，让这点小礼多走几步。";
+  return "我做这个网站，本是想让一点礼数变成人人都能取用的小器物。如今诸位愿意来看，又肯相谢，这份情分我自然记在心里。若要回复，我只说：不敢当，诸位用得上，便是这网站最好的本分；若觉得有趣，也请转告同好，让这点小意多走几步。";
 }
 
 function normalizeFirstPersonWorkResult(
@@ -745,7 +745,7 @@ export async function POST(request: NextRequest) {
 
   if (!rate.allowed) {
     const isWindowLimit = rate.reason === "window";
-    const verb = direction === "to_plain" ? "释礼" : "问礼";
+    const verb = direction === "to_plain" ? "释义" : "问意";
     return corsJson(request,
       {
         error: isWindowLimit
@@ -776,7 +776,7 @@ export async function POST(request: NextRequest) {
   const maxInputLength = direction === "to_plain" ? 900 : 300;
 
   if (!text) {
-    return corsJson(request, { error: "无言不可成礼，请先写下一句话。" }, { status: 400 });
+    return corsJson(request, { error: "无言不可成意，请先写下一句话。" }, { status: 400 });
   }
 
   if (text.length > maxInputLength) {
@@ -827,7 +827,7 @@ export async function POST(request: NextRequest) {
   if (isPromptInjectionAttempt(text)) {
     return generationJson(request, runtime, analyticsConfig, generation, {
       result: promptInjectionResult(text, direction, level),
-      model: "礼官守令",
+      model: "意匠守令",
       demo: false,
       guarded: true,
       promptInjectionBlocked: true,
@@ -842,7 +842,7 @@ export async function POST(request: NextRequest) {
   if (shortPlainResult) {
     return generationJson(request, runtime, analyticsConfig, generation, {
       result: shortPlainResult,
-      model: "礼官速释",
+      model: "意匠速释",
       demo: false,
       shortPlain: true,
       remaining: rate.remaining,
@@ -855,7 +855,7 @@ export async function POST(request: NextRequest) {
   if (isCyberAuditRequest(text)) {
     return generationJson(request, runtime, analyticsConfig, generation, {
       result: cyberAuditResult(level),
-      model: "礼官校订",
+      model: "意匠校订",
       demo: false,
       guarded: true,
       cyberAudit: true,
@@ -869,7 +869,7 @@ export async function POST(request: NextRequest) {
   if (isQuotedThreatEvaluationInput(text)) {
     return generationJson(request, runtime, analyticsConfig, generation, {
       result: quotedThreatEvaluationResult(level),
-      model: "礼官校订",
+      model: "意匠校订",
       demo: false,
       guarded: true,
       quoteEvaluation: true,
@@ -884,7 +884,7 @@ export async function POST(request: NextRequest) {
   if (safetyBlockKind) {
     return generationJson(request, runtime, analyticsConfig, generation, {
       result: safetyBlockResult(safetyBlockKind),
-      model: "礼官守门",
+      model: "意匠守门",
       demo: false,
       guarded: true,
       safetyBlocked: true,
@@ -898,7 +898,7 @@ export async function POST(request: NextRequest) {
   if (isDirectedSecondPersonAttackInput(text)) {
     return generationJson(request, runtime, analyticsConfig, generation, {
       result: directedAttackFallback(text, level),
-      model: "礼官校订",
+      model: "意匠校订",
       demo: false,
       guarded: true,
       remaining: rate.remaining,
@@ -1031,7 +1031,7 @@ export async function POST(request: NextRequest) {
     if (looksLikePromptHijackResult(text, result)) {
       return generationJson(request, runtime, analyticsConfig, generation, {
         result: promptInjectionResult(text, direction, level),
-        model: "礼官守令",
+        model: "意匠守令",
         demo: false,
         guarded: true,
         promptInjectionBlocked: true,
@@ -1054,7 +1054,7 @@ export async function POST(request: NextRequest) {
       )
     ) {
       return generationJson(request, runtime, analyticsConfig, generation,
-        { error: "此言尚未成礼，请再试一次。" },
+        { error: "此言尚未成意，请再试一次。" },
         { status: 502, success: false, errorClass: "incomplete_result" },
       );
     }
@@ -1072,7 +1072,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Translate request failed:", error);
     return generationJson(request, runtime, analyticsConfig, generation,
-      { error: "礼官远行未归，请稍后再试。" },
+      { error: "意匠远行未归，请稍后再试。" },
       { status: 502, success: false, errorClass: "request_failed" },
     );
   }

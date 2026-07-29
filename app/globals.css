@@ -156,7 +156,6 @@ main {
 }
 
 .brand small {
-  color: var(--ink-soft);
   font: 600 9px/1 var(--sans);
   letter-spacing: 0.38em;
 }
@@ -169,7 +168,6 @@ main {
 
 .site-header nav a {
   padding: 35px 0;
-  color: var(--ink-soft);
   font: 500 14px/1 var(--sans);
   letter-spacing: 0.25em;
   position: relative;
@@ -200,6 +198,38 @@ main {
   color: var(--bronze);
   font: 500 11px/1 var(--serif);
   letter-spacing: 0.2em;
+}
+
+.announcement-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #fef3e2, #fde8c8);
+  border-bottom: 1px solid rgba(158, 50, 40, 0.15);
+  font: 400 13px/1.4 var(--serif);
+  color: var(--ink);
+}
+
+.announcement-banner button {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid rgba(73, 59, 42, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--ink);
+  opacity: 0.5;
+  transition: opacity 160ms ease;
+}
+
+.announcement-banner button:hover {
+  opacity: 1;
 }
 
 .hero {
@@ -275,7 +305,6 @@ main {
 
 .hero-copy {
   margin: 0;
-  color: var(--ink-soft);
   font: 400 17px/2 var(--serif);
   letter-spacing: 0.08em;
   position: relative;
@@ -438,6 +467,11 @@ main {
   top: 12%;
   left: 6%;
   color: var(--ink);
+  background: rgba(247, 243, 234, 0.72);
+  padding: 14px 18px;
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .assembly-seal {
@@ -475,7 +509,6 @@ main {
 }
 
 .assembly-inscription div > span {
-  color: var(--ink-soft);
   font: 400 13px/2 var(--serif);
   letter-spacing: 0.05em;
 }
@@ -648,7 +681,6 @@ main {
 }
 
 .character-count {
-  color: var(--ink-soft);
   font-size: 12px;
   font-variant-numeric: tabular-nums;
 }
@@ -702,10 +734,6 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  text-align: left;
-  color: var(--ink-soft);
   background: transparent;
   border: 0;
   transition: 160ms ease;
@@ -734,6 +762,89 @@ main {
   opacity: 0.78;
 }
 
+.custom-api-settings {
+  margin: 16px 0;
+  padding: 14px;
+  background: rgba(222, 211, 192, 0.2);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.custom-api-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.custom-api-row label {
+  font: 500 12px/1 var(--serif);
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  opacity: 0.7;
+}
+
+.custom-api-input,
+.custom-api-select {
+  padding: 8px 10px;
+  font: 400 14px/1.4 var(--serif);
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 160ms ease;
+}
+
+.custom-api-input:focus,
+.custom-api-select:focus {
+  border-color: var(--red);
+}
+
+.custom-api-select {
+  cursor: pointer;
+}
+
+.custom-api-note {
+  font: 400 11px/1.3 var(--serif);
+  color: var(--ink);
+  opacity: 0.55;
+  margin: 0;
+}
+
+.custom-api-model-row {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.custom-api-model-row .custom-api-select {
+  flex: 1;
+}
+
+.custom-api-fetch-btn {
+  padding: 8px 12px;
+  font: 500 12px/1 var(--serif);
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 160ms ease;
+}
+
+.custom-api-fetch-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.custom-api-fetch-btn:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
 .example-row {
   margin-top: 14px;
   display: flex;
@@ -744,7 +855,6 @@ main {
 .example-row > span {
   flex: none;
   padding-top: 7px;
-  color: var(--ink-soft);
   font-size: 11px;
 }
 
@@ -757,8 +867,6 @@ main {
 .example-row button {
   max-width: 230px;
   padding: 6px 9px;
-  cursor: pointer;
-  color: var(--ink-soft);
   background: transparent;
   border: 1px solid rgba(73, 59, 42, 0.16);
   font-size: 11px;
@@ -794,7 +902,7 @@ main {
 
 .mode-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
 }
 
@@ -804,8 +912,6 @@ main {
   display: flex;
   align-items: center;
   gap: 13px;
-  cursor: pointer;
-  text-align: left;
   background: transparent;
   border: 1px solid var(--line);
   transition: 160ms ease;
@@ -845,7 +951,6 @@ main {
 }
 
 .mode-grid small {
-  color: var(--ink-soft);
   font-size: 10px;
 }
 
@@ -871,7 +976,6 @@ main {
 }
 
 .field-help {
-  color: var(--ink-soft);
   font-size: 10px;
 }
 
@@ -886,8 +990,6 @@ main {
   min-width: 62px;
   height: 32px;
   padding: 0 10px;
-  cursor: pointer;
-  color: var(--ink-soft);
   background: transparent;
   border: 0;
   font: 500 11px/1 var(--serif);
@@ -912,7 +1014,6 @@ main {
   display: grid;
   grid-template-columns: 34px 1fr 34px;
   align-items: center;
-  cursor: pointer;
   color: var(--white);
   background: var(--red);
   border: 1px solid var(--red-deep);
@@ -1113,7 +1214,6 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  cursor: pointer;
   color: rgba(242, 231, 211, 0.62);
   background: transparent;
   border: 1px solid rgba(239, 220, 188, 0.18);
@@ -1151,7 +1251,6 @@ main {
   color: rgba(242, 231, 211, 0.58);
   background: transparent;
   border: 1px solid rgba(239, 220, 188, 0.15);
-  cursor: pointer;
   font: 500 10px/1.4 var(--sans);
 }
 
@@ -1243,7 +1342,6 @@ main {
   color: #efc3b5;
   background: rgba(169, 61, 45, 0.14);
   border: 1px solid rgba(218, 116, 91, 0.48);
-  text-align: left;
   font: 500 11px/1.5 var(--serif-dynamic);
 }
 
@@ -1317,7 +1415,6 @@ main {
   padding: 0;
   border: 0;
   background: transparent;
-  cursor: pointer;
 }
 
 .privacy-inline {
@@ -1387,7 +1484,6 @@ main {
 
 .privacy-lead,
 .privacy-page section p {
-  color: var(--ink-soft);
   font: 400 16px/2 var(--serif);
 }
 
@@ -1457,7 +1553,6 @@ main {
 .skill-heading > p {
   margin: 0 0 8px;
   padding-left: 36px;
-  color: var(--ink-soft);
   border-left: 1px solid rgba(75, 58, 38, 0.28);
   font: 400 15px/2.05 var(--serif);
 }
@@ -1555,7 +1650,7 @@ main {
   margin: 44px 0 30px;
   padding: 25px 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 13px 24px;
   border-top: 1px solid rgba(250, 232, 202, 0.18);
   border-bottom: 1px solid rgba(250, 232, 202, 0.18);
@@ -1623,13 +1718,11 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  text-align: left;
   transition: 170ms ease;
 }
 
 .skill-copy-full {
   width: 100%;
-  cursor: pointer;
   color: #67231f;
   background: #eddcbd;
   border: 1px solid #f5e7cf;
@@ -1668,7 +1761,6 @@ main {
 .skill-download > span {
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
 .skill-copy-full strong,
@@ -1808,7 +1900,6 @@ main {
 
 .install-steps p {
   margin: 0 0 7px;
-  color: var(--ink-soft);
   font: 400 11px/1.65 var(--serif);
 }
 
@@ -1842,8 +1933,6 @@ main {
   padding: 0 10px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
   color: #e8c7a0;
   background: transparent;
   border: 1px solid rgba(232, 199, 160, 0.28);
@@ -1952,7 +2041,7 @@ main {
   width: 92px;
   height: 92px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   place-items: center;
   color: var(--red);
   border: 2px solid var(--red);
@@ -1976,7 +2065,6 @@ main {
 .about-section > p {
   margin: 0;
   padding-left: 42px;
-  color: var(--ink-soft);
   border-left: 1px solid rgba(75, 60, 42, 0.25);
   font: 400 15px/2.15 var(--serif);
 }
@@ -2007,7 +2095,6 @@ footer > span,
 .footer-note,
 .footer-right {
   margin: 0;
-  color: var(--ink-soft);
   font: 400 10px/1.7 var(--serif);
   letter-spacing: 0.06em;
 }
@@ -2015,7 +2102,6 @@ footer > span,
 .footer-note {
   max-width: 520px;
   display: grid;
-  gap: 6px;
   justify-self: center;
   text-align: center;
 }
@@ -2111,7 +2197,7 @@ footer > span,
   }
 
   .principle-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .principle-grid article:nth-child(2) {
@@ -2386,7 +2472,6 @@ footer > span,
     max-width: 100%;
     min-height: 40px;
     padding: 0 11px;
-    text-align: left;
   }
 
   .mode-grid {
@@ -2452,7 +2537,7 @@ footer > span,
 
   .negative-reasons > div {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .result-meta {
@@ -2510,7 +2595,6 @@ footer > span,
 
   .footer-note {
     justify-self: start;
-    text-align: left;
   }
 
   .footer-note a {
@@ -2522,7 +2606,6 @@ footer > span,
 
   .footer-right {
     justify-self: start;
-    text-align: left;
   }
 
   .footer-right a {
