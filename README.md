@@ -4,11 +4,6 @@
 
 ![意林体示例](public/images/yilin-assembly.webp)
 
-## 赞助
-
-![微信支付](public/images/wechat-pay.jpg)
-![支付宝](public/images/alipay.jpg)
-
 ## 功能
 
 - **开写** — 输入一个梗/槽点，生成一本正经的意林体反讽段子
@@ -45,3 +40,8 @@ npm run dev -p 8666 --hostname 0.0.0.0
 - DeepSeek API
 - nginx (反代 + HTTPS + 限流)
 - Let's Encrypt 证书
+
+## 赞助
+
+![微信支付](public/images/wechat-pay.jpg)
+![支付宝](public/images/alipay.jpg)
