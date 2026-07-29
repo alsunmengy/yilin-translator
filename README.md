@@ -4,6 +4,10 @@
 
 ![意林体示例](public/images/yilin-assembly.webp)
 
+## Star 历史
+
+![Star History](public/images/github-star-history-zhouli.svg)
+
 ## 功能
 
 - **开写** — 输入一个梗/槽点，生成一本正经的意林体反讽段子
