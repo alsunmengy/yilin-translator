@@ -6,6 +6,11 @@
 
 ![意林体来源](images/yilin-source.jpg)
 
+## 赞助
+
+![微信支付](images/wechat-pay.jpg)
+![支付宝](images/alipay.jpg)
+
 ## 功能
 
 - **开写** — 输入一个梗/槽点，生成一本正经的意林体反讽段子

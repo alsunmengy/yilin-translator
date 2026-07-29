@@ -421,6 +421,7 @@ export default function Home() {
   const [fetchingModels, setFetchingModels] = useState(false);
   const [result, setResult] = useState("");
   const [showBanner, setShowBanner] = useState(true);
+  const [showDonate, setShowDonate] = useState(false);
 
   useEffect(() => {
     setFreeRemaining(usageRemaining());
@@ -1350,13 +1351,15 @@ export default function Home() {
       </header>
 
       {showBanner && (
-        <div className="announcement-banner">
-          <span>💰 作者财力雄厚，所以余额只剩十余元。每个人免费 5 次，用自己的 API 可以无限使用。{' '}
-            <a href="https://github.com/alsunmengy/yilin-translator" target="_blank" rel="noreferrer">GitHub 仓库</a>
-          </span>
-          <button onClick={() => setShowBanner(false)}>✕</button>
-        </div>
-      )}
+          <div className="announcement-banner">
+            <span>💰 作者财力雄厚，所以余额只剩十余元。每个人免费 5 次，用自己的 API 可以无限使用。{' '}
+              <a href="https://github.com/alsunmengy/yilin-translator" target="_blank" rel="noreferrer">GitHub 仓库</a>
+              {' · '}
+              <button className="donate-link" onClick={() => setShowDonate(true)}>赞助</button>
+            </span>
+            <button onClick={() => setShowBanner(false)}>✕</button>
+          </div>
+        )}
       <section className="hero" id="top">
         <div className="hero-kicker">
           <span />
