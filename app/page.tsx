@@ -143,7 +143,7 @@ const plainExamples: string[] = [];
 
 const originalVideoUrl =
   "https://www.bilibili.com/video/BV12a7N6qE1g/";
-const githubUrl = "https://github.com/Aspirin0000/zhouli-translator";
+const githubUrl = "https://github.com/alsunmengy/yilin-translator";
 
 const loadingLines = [
   "正在把梗包装成意林体",
@@ -2043,7 +2043,7 @@ export default function Home() {
                   <h4>在对话中点名使用</h4>
                   <div className="prompt-example">
 	                    <p>
-	                      使用 $speak-yilin，把“疯狂星期四，谁愿请我一食才合乎意林”
+	                      使用 $speak-yilin，把“美军开直升机拯救被挂在树上的小猫才合乎意林”
 	                      改写成强行圆场的小意；或把一段意林体释义，翻回直接人话。
 	                    </p>
                     <button type="button" onClick={copySkillPrompt}>
