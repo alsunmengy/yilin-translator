@@ -1,4 +1,5 @@
 node_modules/
 .next/
 .env.local
-*.zip
+public/downloads/speak-zhouli-skill.zip
+tsconfig.tsbuildinfo

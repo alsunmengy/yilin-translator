@@ -134,7 +134,7 @@ const plainLevels: Array<{
 
 const examples = [
   "华强买瓜，如何问这瓜保熟吗",
-  "疯狂星期四，谁愿请我一食",
+  "美军开直升机拯救被挂在树上的小猫",
   "老板说年轻人要多吃苦，我该怎样温言相劝",
   "NiKo十年终夺冠，这事怎么夸",
 ];
@@ -424,13 +424,13 @@ export default function Home() {
   const [showDonate, setShowDonate] = useState(false);
 
   useEffect(() => {
-    setFreeRemaining(usageRemaining());
+    setFreeRemaining(Math.min(3, usageRemaining()));
   }, []);
 
   // === Browser fingerprint + usage limit ===
   const FINGERPRINT_KEY = "yilin_fp";
   const USAGE_KEY = "yilin_usage";
-  const MAX_FREE_USES = 3;
+  const MAX_FREE_USES = 5;
 
   function getFingerprint(): string {
     try {
@@ -737,7 +737,9 @@ export default function Home() {
     if (!text.trim() || loading) return;
     if (isRegenerate) void sendInteraction("regenerate");
     // Check free usage limit (only for built-in API)
-    if (!isPlainDirection && usageRemaining() <= 0) {
+    const useFallbackCustomApi = !isPlainDirection && usageRemaining() <= 0
+      && customProvider && customProvider !== "builtin" && customApiKey.trim();
+    if (!isPlainDirection && usageRemaining() <= 0 && !useFallbackCustomApi) {
       setError("免费次数已用完。点击「自定义」配你自己的 API Key 可无限使用。");
       return;
     }
@@ -748,7 +750,7 @@ export default function Home() {
 
     try {
       // Custom API mode
-      if (isPlainDirection) {
+      if (isPlainDirection || useFallbackCustomApi) {
         // Built-in mode: use the server API directly
         if (customProvider === "builtin") {
           const response = await fetchTranslateWithRetry(
@@ -770,7 +772,7 @@ export default function Home() {
           if (!response.ok) throw new Error(getResponseErrorMessage(response, data));
           if (typeof data.result !== "string") throw new Error("生成器暂时没反应，请稍后再试。");
           setResult(data.result);
-          if (!isPlainDirection) { incrementUsage(); setFreeRemaining(usageRemaining()); }
+          if (!isPlainDirection) { incrementUsage(); setFreeRemaining(Math.min(3, usageRemaining())); }
           setLoading(false);
           window.setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
           return;
@@ -779,7 +781,7 @@ export default function Home() {
         if (!customApiKey.trim()) {
           throw new Error("请先填写 API Key。");
         }
-        const systemPrompt = "你是意林合订版风格的文案作者。把用户的梗改写成一本正经的意林体反讽短文。三段式：定场一句话（用虚构地名如洛圣都）→ 离谱操作 + 一个数字 → 一句话对比收尾。结尾用\"不是××，不是××，只是××\"升华。纯白话。";
+        const systemPrompt = "你是意林合订版风格的文案作者。把用户的梗改写成一本正经的意林体反讽短文。\n核心结构（三段式）：\n1. 定场：用虚构地名开头，如「在洛圣都留学时，有件事让我至今难忘。」\n2. 离谱操作：写一件明显小题大作的事，加一个具体数字，重点写行动本身（派直升机、出动消防车），不要写报告或白皮书。\n3. 升华+对比：把过度操作硬说成一种美德，用一句国内日常对比收尾，结尾用「不是××，不是××，只是××」升华。\n语言：纯白话，不要文言文。只输出正文，不要标题和说明。";
 
         const defaultModel = customProvider.includes("deepseek") ? "deepseek-chat"
           : customProvider.includes("xiaomimimo") ? "mimo-v2.5"
@@ -813,9 +815,11 @@ export default function Home() {
         }
 
         const dsData = await deepseekRes.json();
-        const content = dsData?.choices?.[0]?.message?.content;
+        const rawContent = dsData?.choices?.[0]?.message?.content;
+        const reasoningContent = dsData?.choices?.[0]?.message?.reasoning_content;
+        const content = (rawContent || reasoningContent || "").trim();
         if (!content) throw new Error("API 返回内容为空");
-        setResult(content.trim());
+        setResult(content);
         setLoading(false);
         window.setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
         return;
@@ -846,7 +850,7 @@ export default function Home() {
         throw new Error("生成器暂时没反应，请稍后再试。");
       }
       setResult(data.result);
-      if (!isPlainDirection) { incrementUsage(); setFreeRemaining(usageRemaining()); }
+      if (!isPlainDirection) { incrementUsage(); setFreeRemaining(Math.min(3, usageRemaining())); }
       setIsDemo(Boolean(data.demo));
       setResponseId(typeof data.response_id === "string" ? data.response_id : "");
       setFeedbackToken(typeof data.feedback_token === "string" ? data.feedback_token : "");
@@ -1880,8 +1884,8 @@ export default function Home() {
                     {isDemo
                       ? "本地演示 · 配置 API 后启用大模型"
                       : isPlainDirection
-                        ? "DeepSeek 释义官已阅"
-                        : "DeepSeek 大儒已阅"}
+                        ? "模型已阅"
+                        : "模型已阅"}
                   </span>
 	                  {remaining !== null && (
 	                    <span>

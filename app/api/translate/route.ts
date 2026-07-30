@@ -32,6 +32,46 @@ import {
 
 export const runtime = "nodejs";
 
+/**
+ * Function name kept for backward compatibility; actually calls the
+ * MiMo API (https://api.xiaomimimo.com).  See fetchModelWithRetry below.
+ */
+
+async function fetchModelWithRetry(
+  apiKey: string,
+  body: Record<string, unknown>,
+) {
+  const retryDelays = [800];
+  let lastError: unknown;
+
+  for (let attempt = 0; attempt <= retryDelays.length; attempt += 1) {
+    try {
+      const response = await fetch("https://api.deepseek.com/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(45_000),
+      });
+
+      if (response.ok || response.status < 500 || attempt >= retryDelays.length) {
+        return response;
+      }
+    } catch (error) {
+      lastError = error;
+      if (attempt >= retryDelays.length) {
+        throw error;
+      }
+    }
+
+    await wait(retryDelays[attempt]);
+  }
+
+  throw lastError;
+}
+
 const VALID_MODES = new Set<ZhouliMode>([
   "lament",
   "praise",
@@ -662,41 +702,6 @@ function wait(ms: number) {
   });
 }
 
-async function fetchDeepSeekWithRetry(
-  apiKey: string,
-  body: Record<string, unknown>,
-) {
-  const retryDelays = [800];
-  let lastError: unknown;
-
-  for (let attempt = 0; attempt <= retryDelays.length; attempt += 1) {
-    try {
-      const response = await fetch("https://api.deepseek.com/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-        signal: AbortSignal.timeout(45_000),
-      });
-
-      if (response.ok || response.status < 500 || attempt >= retryDelays.length) {
-        return response;
-      }
-    } catch (error) {
-      lastError = error;
-      if (attempt >= retryDelays.length) {
-        throw error;
-      }
-    }
-
-    await wait(retryDelays[attempt]);
-  }
-
-  throw lastError;
-}
-
 export async function POST(request: NextRequest) {
   let body: {
     text?: unknown;
@@ -961,11 +966,11 @@ export async function POST(request: NextRequest) {
     let cleanedResult = "";
 
     for (let attempt = 0; attempt < 2; attempt += 1) {
-      const response = await fetchDeepSeekWithRetry(apiKey, requestBody);
+      const response = await fetchModelWithRetry(apiKey, requestBody);
       data = await response.json();
 
       if (!response.ok) {
-        console.error("DeepSeek API error status:", response.status);
+        console.error("Model API error status:", response.status);
         return generationJson(request, runtime, analyticsConfig, generation,
           { error: "大儒暂未回应，请稍后再试。" },
           { status: 502, success: false, errorClass: "provider_error" },
