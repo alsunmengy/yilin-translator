@@ -43,19 +43,19 @@
   <text x="106" y="181.60" text-anchor="end" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="13">八</text>
   <line x1="120" y1="124.00" x2="802" y2="124.00" stroke="#d9c29e" stroke-opacity="0.48"/>
   <text x="106" y="128.00" text-anchor="end" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="13">十</text>
-  <line x1="160.11" y1="124" x2="160.11" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
-  <text x="160.11" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">七月三十</text>
-  <line x1="368.19" y1="124" x2="368.19" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
-  <text x="368.19" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">七月三十一</text>
-  <line x1="576.27" y1="124" x2="576.27" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
-  <text x="576.27" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">八月初一</text>
-  <line x1="784.34" y1="124" x2="784.34" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
-  <text x="784.34" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">八月初二</text>
+  <line x1="159.06" y1="124" x2="159.06" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
+  <text x="159.06" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">七月三十</text>
+  <line x1="361.68" y1="124" x2="361.68" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
+  <text x="361.68" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">七月三十一</text>
+  <line x1="564.30" y1="124" x2="564.30" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
+  <text x="564.30" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">八月初一</text>
+  <line x1="766.92" y1="124" x2="766.92" y2="392" stroke="#ead6b7" stroke-opacity="0.54"/>
+  <text x="766.92" y="446" text-anchor="middle" fill="#7a6247" font-family="Songti SC, STSong, SimSun, serif" font-size="14">八月初二</text>
   <line x1="120" y1="392" x2="802" y2="392" stroke="#6c4f2e" stroke-width="1.6"/>
   <line x1="120" y1="124" x2="120" y2="392" stroke="#6c4f2e" stroke-width="1.6"/>
-  <polygon points="120.00,392.00 120.00,392.00 137.34,365.20 802.00,365.20 802.00,392.00" fill="url(#area)"/>
-  <polyline points="120.00,392.00 137.34,365.20 802.00,365.20" fill="none" stroke="#f3d7a2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/>
-  <polyline points="120.00,392.00 137.34,365.20 802.00,365.20" fill="none" stroke="url(#line)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="137.34" cy="365.20" r="7" fill="#9e3228" stroke="#f7ead1" stroke-width="3"/>
+  <polygon points="120.00,392.00 120.00,392.00 136.88,365.20 802.00,365.20 802.00,392.00" fill="url(#area)"/>
+  <polyline points="120.00,392.00 136.88,365.20 802.00,365.20" fill="none" stroke="#f3d7a2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.72"/>
+  <polyline points="120.00,392.00 136.88,365.20 802.00,365.20" fill="none" stroke="url(#line)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="136.88" cy="365.20" r="7" fill="#9e3228" stroke="#f7ead1" stroke-width="3"/>
   <text x="460" y="494" text-anchor="middle" fill="#9b8361" font-family="Songti SC, STSong, SimSun, serif" font-size="12">基于 GitHub 公开数据绘制</text>
 </svg>
