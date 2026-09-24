@@ -1,4 +1,5 @@
 # 意林体翻译器
+[![GitHub followers](https://img.shields.io/github/followers/alsunmengy?style=social&label=Follow)](https://github.com/alsunmengy)
 
 基于 [zhouli-translator](https://github.com/Aspirin0000/zhouli-translator) 改造的意林体反讽文生成工具。
 
