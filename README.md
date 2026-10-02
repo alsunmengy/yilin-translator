@@ -46,7 +46,3 @@ npm run dev -p 8666 --hostname 0.0.0.0
 - nginx (反代 + HTTPS + 限流)
 - Let's Encrypt 证书
 
-## 赞助
-
-![微信支付](public/images/wechat-pay.jpg)
-![支付宝](public/images/alipay.jpg)
